@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,600;1,500;1,700&family=Kanit:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+
+<style media="all">
+
+.full {
+    position:absolute;
+    top:12.5%;
+    left:12.5%;
+    background-color:rgba(230, 232, 236, 0.589);
+    height: 75%;
+    width: 75%;
+    text-align: center;
+}
+
+body {
+    background-color:rgb(252, 251, 250);
+    height: 100%;
+    width:100%;
+    top:0;
+}
+
+.top-banner-img {
+    position:absolute;
+    top:6%;
+    left:12.5%;
+    background-color: rgb(252, 251, 250);
+    height: 12%;
+    width: 75%;
+    text-align: center;
+}
+
+.title {
+    position:absolute;
+    margin: 0;
+    padding:0;
+    background-color:rgba(36, 67, 170, 0.938);
+    text-align: center;
+    height:8%;
+    top:0%;
+    width:100%;
+    left:0%;
+
+    border-radius:4px;
+}
+
+.title-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: max(1.6vw, 15px);
+    color:rgb(255, 255, 255);
+    margin: 0;
+    padding:0;
+}
+
+.downloadbtn {
+    display: block;
+    margin: 0 auto;
+    padding:3px;
+    cursor: pointer;
+    background: rgb(255,255,255);
+    color: #73787d;
+    font-size: max(.9vw, 10px);
+    font-family: 'Montserrat', sans-serif;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:5px;
+}
+
+.btn-container-left {
+    display:flex;
+    position:absolute;
+    left:0%;
+    top:10%;
+    width:40%;
+    height:60%;
+    background-color:rgba(36, 67, 170, 0.7);
+    color:white;
+
+    border-radius:10px;
+}
+
+.btn-container-right {
+    display:flex;
+    position:absolute;
+    left:40%;
+    top:8%;
+    width:60%;
+    height:92%;
+    background-color:rgba(230, 232, 236, 0.589);
+    color:white;
+}
+
+.right-fill {
+    position:absolute;
+    top:7%;
+    left:7%;
+    background-color:rgba(36, 67, 170, 0.7);
+    height: 86%;
+    width: 86%;
+    text-align: center;
+    border-radius:10px;
+}
+
+.generate-container {
+    display:flex;
+    position:absolute;
+    left:0%;
+    top:73%; 
+    width:40%;
+    height:27%;
+    background-color:rgba(36, 67, 170, 0.7);
+    color:white;
+
+    border-radius:10px
+}
+
+.center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.center-amzn-left {
+
+    margin: 0;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.center-cost-left {
+    margin: 0;
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.center-generate {
+    margin: 0;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.label-btn-header {
+    font-family: 'Montserrat', sans-serif;
+    
+    font-size: max(1.25vw, 10px);    
+}
+
+.download-pos {
+    position: relative;
+    margin-top:4%;
+}
+
+.file-error{
+    font-size: max(.75vw, 8px);
+    color:rgba(196, 57, 57, 0.952)
+}
+
+
+
+tbody tr:nth-child(odd) {
+  background-color: #ffffff;
+  color:black;
+}
+
+tbody tr:nth-child(even) {
+  
+  color:white;
+}
+
+
+table {
+  
+  font-family: 'Montserrat', sans-serif;
+  margin: auto;
+  color:black;
+  
+  width:90%;
+  height:75%;
+  font-size: max(.75vw, 7px);
+}
+
+table, th, td {
+  /*border: 1px solid black;*/
+  border:None;
+  border-collapse: collapse;
+  
+}
+
+thead {
+    color:white;
+    text-align:center;
+    background-color: rgba(36, 67, 170, 0.7);
+}
+
+th {
+  letter-spacing: 2px;
+}
+
+td {
+  letter-spacing: 1px;
+}
+tbody td {
+  text-align: center;
+}
+
+
+
+</style>
+</head>
+
+<body>
+    <div class="top-banner-img">
+        <div>
+            <img src="static/img/newlogo.webp" 
+            alt="Turner Supply Logo"
+            width="30%"   
+            height="95%"/> 
+        </div>
+    </div>
+
+    <div class="full">
+
+        <div class="title">
+            <div class="center">
+                <span class="title-text">Amazon Report Generator</span>
+            </div>
+        </div>
+        <div class="btn-container-left">
+            <div class="center-amzn-left">
+                <div class="label-btn-header">
+                    <p>Please Select Amazon Report</p>
+                    <form id="form" action="/data" method="POST" href="{{ url_for('data') }}">
+                        <input class="downloadbtn" type ="submit" name="action" value="Select Amazon File">
+                    </form>
+                    <p class="file" id="amznfile">{{ amznfile }}</p>
+                    <p class="file-error">{{ error_amzn }}</p>
+                </div>
+            </div>  
+            <div class="center-cost-left">
+                <div class="label-btn-header">
+                    <p>Please Select SX Cost Report</p>
+                    <form action="/data" method="POST" href="{{ url_for('data') }}">
+                        <input class="downloadbtn" type ="submit" name="action" value="Select Cost File">
+                    </form>
+                    <p class="file" id="ordfile">{{ ordfile }}</p>
+                    <p class="file-error">{{ error_cost }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="btn-container-right">
+            <div class="right-fill">
+                <!--sample table-->
+                {% for table in tables %}
+                    {{titles[loop.index]}}
+                    {{ table|safe }}
+                {% endfor %}
+                
+                <div class="download-pos">
+                    <!--Download report-->
+                    <form action="/data" method="POST" href="{{ url_for('data') }}">
+                        <input class="downloadbtn" type ="submit" name="action" value="Download">
+                    </form>
+                </div>
+                <p>{{ e }}</p>
+
+            </div>
+        </div>
+        <div class="generate-container">
+            <div class="center-generate">
+                <div class="label-btn-header">
+                    <p>Generate Report</p>
+                    <form action="/data" method="POST" href="{{ url_for('data') }}">
+                        <input class="downloadbtn" type ="submit" name="action" id="download" value="Generate Report">
+                    </form>
+                    <p class="file-error">{{ error_gen }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>

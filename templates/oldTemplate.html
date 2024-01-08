@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,600;1,500;1,700&family=Kanit:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style media="all">
+
+.full {
+    position:absolute;
+    top:12.5%;
+    left:12.5%;
+    background-color:rgba(230, 232, 236, 0.589);
+    height: 75%;
+    width: 75%;
+    text-align: center;
+}
+
+body {
+    background-color:rgb(252, 251, 250);
+    height: 100%;
+    width:100%;
+    top:0;
+}
+
+.top-banner-img {
+    position:absolute;
+    top:6%;
+    left:12.5%;
+    background-color: rgb(252, 251, 250);
+    height: 12%;
+    width: 75%;
+    text-align: center;
+}
+
+.title {
+    margin: 0;
+    padding:0;
+    background-color:rgba(36, 67, 170, 0.938);
+    text-align: center;
+    height:8%;
+    top:0%;
+}
+
+.title-text {
+    font-family: 'Kanit', sans-serif;
+    font-size: max(1.6vw, 15px);
+    color:rgb(255, 255, 255);
+    margin: 0;
+    padding:0;
+}
+
+#loader {
+
+    font-size: 42px;
+    color: rgba(36, 67, 170, 0.938);
+    z-index: -1;
+    font-family: 'Kanit', sans-serif;
+}
+
+.loader-container-hidden {
+    display: none;
+}
+
+.downloadbtn {
+    display: block;
+    margin: 0 auto;
+    padding:3px;
+    cursor: pointer;
+    background: rgb(255,255,255);
+    color: #73787d;
+    font-size: max(.9vw, 12px);
+    font-family: 'Kanit', sans-serif;
+    align-items:center;
+    justify-content:center;
+}
+
+.btn-container-left {
+    display:flex;
+    position:absolute;
+    left:0;
+    top:8%;
+    width:50%;
+    height:50%;
+    background-color:rgba(181, 213, 228, 0.938);
+}
+
+.btn-container-right {
+    display:flex;
+    position:absolute;
+    left:50%;
+    top:8%;
+    width:50%;
+    height:50%;
+    background-color:rgba(207, 181, 228, 0.938);
+}
+
+.center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.label-main {
+    font-family: 'Kanit', sans-serif;
+    
+    font-size: max(1.1vw, 13px);
+    
+    
+}
+
+.label-sub {
+    font-size: max(.7vw, 9px);
+}
+
+.file {
+    font-size: max(.75vw, 10px);
+    color:rgba(129, 129, 129, 0.952)
+}
+.bottom-container {
+    display:flex;
+    position:absolute;
+    left:0%;
+    top:58%;
+    width:100%;
+    height:42%;
+    background-color:rgba(161, 199, 180, 0.938);
+}
+
+</style>
+</head>
+
+<body>
+    <div class="top-banner-img">
+        <div>
+            <img src="static/img/newlogo.webp" 
+            alt="Turner Supply Logo"
+            width="30%"   
+            height="95%"/> 
+        </div>
+    </div>
+
+    <div class="full">
+        <div class="title">
+            <p class="title-text">Amazon Report Generator</p>
+        </div>
+        <div class="btn-container-left">
+            <div class="center">
+                <div class="label-main">
+                    <p>Please Select Amazon Report</p>
+                    <form id="form" action="/data" method="POST" href="{{ url_for('data') }}">
+                        <input class="downloadbtn" type ="submit" name="action" value="Select File">
+                    </form>
+                    <p class="file">{{ amznfile }}</p>
+                    <p class="label-sub">*The inputted report should be the "Payments Report" from the "Payments Reports Repository" on Amazon Seller Central</p>
+                </div>
+            </div>
+        </div>
+        <div class="btn-container-right">
+            <div class="center">
+                <div class="label-main">
+                    <p>Please Select SX Cost Report</p>
+                    <form action="/data" method="POST" href="{{ url_for('data') }}">
+                        <input class="downloadbtn" type ="submit" name="action" value="Select Cost File">
+                    </form>
+                    <p class="file">{{ ordfile }}</p>
+                    <p class="label-sub">*The inputted report is the "Export Sales Data to CSV File" report under "TS Sales Reports" in SX</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="loader" class="loader-container-hidden">
+            <p>Working</p>
+
+        </div>
+        <div class="bottom-container">
+            <div class="center">
+                <div class="label-main"></div>
+                    <p>Generate Report</p>
+                    <form action="/data" method="POST" href="{{ url_for('data') }}">
+                        <input class="downloadbtn" type ="submit" name="action" id="download" value="Generate Report">
+                    </form>
+                    <p>Download Report</p>
+                    <form action="/data" method="POST" href="{{ url_for('data') }}">
+                        <input class="downloadbtn" type ="submit" name="action" value="Download">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+<script>
+    //both js functions use this for element instance
+    //const form = document.getElementById("form");
+    //form.addEventListener("submit", verify);
+    
+    //fucntion to create loading animation
+    const loaderContainer = document.getElementById('loader');
+    const states = ['Loading','Loading .','Loading . .','Loading . . .']
+    //sleep func
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    async function logSubmit(event) {
+        console.log('loading')
+        loaderContainer.classList.remove('loader-container-hidden');
+
+        for (let i = 0; i < 200; i++) {
+
+            loaderContainer.textContent = states[0]
+            await sleep(1000);
+            loaderContainer.textContent = states[1]
+            await sleep(1000);
+            loaderContainer.textContent = states[2]
+            await sleep(1000);
+            loaderContainer.textContent = states[3]
+            await sleep(1000);
+        }
+    }
+    const form = document.getElementById("form");
+    form.addEventListener("submit", logSubmit);
+
+
+</script>
