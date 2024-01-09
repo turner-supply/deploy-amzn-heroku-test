@@ -7,9 +7,12 @@ from pathlib import Path
 import tkinter as tk 
 from tkinter.filedialog import askopenfilename
 from flask import send_file
+from flaskwebgui import FlaskUI
     
 
 app = Flask(__name__) 
+
+ui = FlaskUI(app=app, server="flask", width=1100, height=750) 
 
 place_dict = {'amznfile':'',
          'ordfile':''}
@@ -147,4 +150,4 @@ add option to exclude cost of goods?
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    ui.run()
